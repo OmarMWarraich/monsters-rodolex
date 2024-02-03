@@ -1,8 +1,8 @@
 import { Component } from 'react';
 
-import logo from './logo.svg';
+import CardList from './components/card-list/card-list.component';
+import SearchBox from './components/search-box/search-box.component';
 import './App.css';
-import { toHaveStyle } from '@testing-library/jest-dom/matchers';
 
 class App extends Component {
   constructor(props) {
@@ -35,12 +35,9 @@ class App extends Component {
         )
     return (
       <div className="App">
-        <input className='search' type='search' placeholder='search monsters' onChange={onSearchChange}/>
-        {
-          filterMonsters.map((monster) => (
-            <h1 key={monster.id}>{monster.name}</h1>
-          ))
-        }
+        <h1 className='app-title'>Monsters Rodolex</h1>
+        <SearchBox className='monsters-search-box' handleChange={onSearchChange} placeholder='search monsters' />
+        <CardList monsters={filterMonsters} />
       </div>
     );
   }
